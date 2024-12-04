@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогноз погоды</title>
+</head>
+<body>
+    <h1>Погода на маршруте</h1>
+    <form method="POST">
+        <input type="text" name="start_city" placeholder="Начальная точка" required>
+        <input type="text" name="end_city" placeholder="Конечная точка" required>
+        <button type="submit">Узнать погоду</button>
+    </form>
+
+    {% if error_message %}<p style="color: red;">{{ error_message }}</p>{% endif %}
+    {% if weather_results %}
+        <h2>Прогнозы:</h2>
+        <ul>
+            {% for result in weather_results %}
+                <li>
+                    {{ result.city }}: {{ result.temperature }}°C, {{ result.wind_speed }} км/ч,
+                    Осадки: {{ result.precipitation_probability }}%,
+                    {% if result.is_bad %}Плохая{% else %}Хорошая{% endif %} погода
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
+
