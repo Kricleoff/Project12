@@ -19,8 +19,8 @@
         <ul>
             {% for result in weather_results %}
                 <li>
-                    {{ result.city }}: {{ result.temperature }}°C, {{ result.wind_speed }} км/ч,
-                    Осадки: {{ result.precipitation_probability }}%,
+                    {{ result.city }}: {{ result.temperature }}°C, Скорость ветра: {{ result.wind_speed }} км/ч,
+                    Вероятность дождя: {{ result.precipitation_probability }}%, Влажность {{ result.humidity}}%,
                     {% if result.is_bad %}Плохая{% else %}Хорошая{% endif %} погода
                 </li>
             {% endfor %}
@@ -28,4 +28,3 @@
     {% endif %}
 </body>
 </html>
-
